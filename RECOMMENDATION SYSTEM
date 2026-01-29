@@ -1,0 +1,27 @@
+movies = {
+    "Inception": ["Sci-Fi", "Action"],
+    "Interstellar": ["Sci-Fi", "Drama"],
+    "The Dark Knight": ["Action", "Crime"],
+    "Titanic": ["Romance", "Drama"],
+    "Avengers": ["Action", "Sci-Fi"]
+}
+
+def recommend_movies(favorite_movie):
+    if favorite_movie not in movies:
+        return "Movie not found!"
+
+    favorite_genres = set(movies[favorite_movie])
+    recommendations = []
+
+    for movie, genres in movies.items():
+        if movie != favorite_movie:
+            similarity = len(favorite_genres & set(genres))
+            if similarity > 0:
+                recommendations.append(movie)
+
+    return recommendations
+
+# Example
+print(recommend_movies("Inception"))
+
+
